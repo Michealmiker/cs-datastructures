@@ -3,7 +3,7 @@ namespace DataStructures.LinearList;
 /// <summary>
 /// 顺序表
 /// </summary>
-public class SequentialList<T>: DataStructures.Common.IEnumerable<T>
+public class SequentialList<T>: Common.IEnumerable<T>
 {
     public T this[int i]
     {
@@ -14,7 +14,7 @@ public class SequentialList<T>: DataStructures.Common.IEnumerable<T>
     /// <summary>
     /// 表长度
     /// </summary>
-    public int Count { get; private set; }
+    public int Count { get; private set; } = 0;
 
     /// <summary>
     /// 表容量
@@ -39,7 +39,6 @@ public class SequentialList<T>: DataStructures.Common.IEnumerable<T>
     public SequentialList()
     {
         _contents = new T[LIST_INIT_SIZE];
-        Count = 0;
         Capacity = LIST_INIT_SIZE;
     }
 
@@ -80,6 +79,11 @@ public class SequentialList<T>: DataStructures.Common.IEnumerable<T>
 
     public void RemoveAt(int index)
     {
+        if (index > Count)
+        {
+            return;
+        }
+
         for (int i = index-1; i < Count-1; i++)
         {
             _contents[i] = _contents[i + 1];
@@ -126,10 +130,10 @@ public class SequentialList<T>: DataStructures.Common.IEnumerable<T>
         Array.Resize(ref _contents, Capacity);
     }
 
-    public DataStructures.Common.IEnumerator<T> GetEnumerator()
+    public Common.IEnumerator<T> GetEnumerator()
         => new SequentialListEnumerator(this);
 
-    private class SequentialListEnumerator : DataStructures.Common.IEnumerator<T>
+    private class SequentialListEnumerator : Common.IEnumerator<T>
     {
         public T Current => _list._contents[_index];
 
