@@ -2,8 +2,16 @@ namespace DataStructures.LinearList;
 
 public class LinkedList<T> : Common.IEnumerable<T>
 {
+    /// <summary>
+    /// 表长度
+    /// </summary>
+    /// <value></value>
     public int Count { get; private set; } = 0;
 
+    /// <summary>
+    /// 表头引用
+    /// </summary>
+    /// <returns></returns>
     private LinkedListNode _head = new();
 
     public void Add(T elem)
@@ -54,20 +62,15 @@ public class LinkedList<T> : Common.IEnumerable<T>
         {
             if (ptr.next.data!.Equals(elem))
             {
+                ptr.next = ptr.next!.next;
+
+                Count--;
+
                 break;
             }
 
             ptr = ptr.next;
         }
-
-        if (ptr is null)
-        {
-            return;
-        }
-
-        ptr.next = ptr.next!.next;
-
-        Count--;
     }
 
     public void RemoveAt(int index)
@@ -131,12 +134,24 @@ public class LinkedList<T> : Common.IEnumerable<T>
     public Common.IEnumerator<T> GetEnumerator()
         => new LinkedListEnumerator(this);
 
+    /// <summary>
+    /// 链表节点
+    /// </summary>
     private class LinkedListNode
     {
+        /// <summary>
+        /// 数据
+        /// </summary>
         public T data;
+        /// <summary>
+        /// 下一节点引用
+        /// </summary>
         public LinkedListNode next;
     }
 
+    /// <summary>
+    /// 链表迭代器
+    /// </summary>
     private class LinkedListEnumerator : Common.IEnumerator<T>
     {
         public T Current => _curPtr.data;

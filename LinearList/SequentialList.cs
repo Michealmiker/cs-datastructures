@@ -5,6 +5,10 @@ namespace DataStructures.LinearList;
 /// </summary>
 public class SequentialList<T>: Common.IEnumerable<T>
 {
+    /// <summary>
+    /// 表索引器
+    /// </summary>
+    /// <value></value>
     public T this[int i]
     {
         get => _contents[i];
@@ -133,6 +137,9 @@ public class SequentialList<T>: Common.IEnumerable<T>
     public Common.IEnumerator<T> GetEnumerator()
         => new SequentialListEnumerator(this);
 
+    /// <summary>
+    /// 顺序表迭代器
+    /// </summary>
     private class SequentialListEnumerator : Common.IEnumerator<T>
     {
         public T Current => _list._contents[_index];
