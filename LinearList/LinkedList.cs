@@ -1,5 +1,9 @@
 namespace DataStructures.LinearList;
 
+/// <summary>
+/// 链表
+/// </summary>
+/// <typeparam name="T"></typeparam>
 public class LinkedList<T> : Common.IEnumerable<T>
 {
     /// <summary>

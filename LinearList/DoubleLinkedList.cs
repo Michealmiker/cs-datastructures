@@ -1,10 +1,10 @@
 namespace DataStructures.LinearList;
 
 /// <summary>
-/// 循环链表
+/// 双向链表
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public class CircularLinkedList<T> : Common.IEnumerable<T>
+public class DoubleLinkedList<T> : Common.IEnumerable<T>
 {
     /// <summary>
     /// 表长度
@@ -16,11 +16,11 @@ public class CircularLinkedList<T> : Common.IEnumerable<T>
     /// 表头引用
     /// </summary>
     /// <returns></returns>
-    private CircularLinkedListNode _head = new();
+    private DoubleLinkedListNode _head = new();
 
     public void Add(T elem)
     {
-        var node = new CircularLinkedListNode
+        var node = new DoubleLinkedListNode
         {
             data = elem
         };
@@ -28,29 +28,25 @@ public class CircularLinkedList<T> : Common.IEnumerable<T>
         if (Count == 0)
         {
             _head.next = node;
-            node.next = _head.next;
+            _head.prior = node;
 
             Count++;
 
             return;
         }
 
-        var ptr = _head.next;
-
-        while (ptr.next != _head.next)
-        {
-            ptr = ptr.next;
-        }
-
-        ptr.next = node;
+        _head.prior.next = node;
         node.next = _head.next;
+        node.prior = _head.prior;
+        _head.prior = node;
+        _head.next.prior = node;
 
         Count++;
     }
 
     public void AddFirst(T elem)
     {
-        var node = new CircularLinkedListNode
+        var node = new DoubleLinkedListNode
         {
             data = elem
         };
@@ -58,46 +54,46 @@ public class CircularLinkedList<T> : Common.IEnumerable<T>
         if (Count == 0)
         {
             _head.next = node;
-            node.next = _head.next;
+            _head.prior = node;
 
             Count++;
 
             return;
         }
 
-        var ptr = _head.next;
-
-        while (ptr.next != _head.next)
-        {
-            ptr = ptr.next;
-        }
-
         node.next = _head.next;
+        node.prior = _head.prior;
+        _head.next.prior = node;
         _head.next = node;
+        _head.prior.next = node;
 
-        ptr.next = _head.next;
 
         Count++;
     }
 
     public void Remove(T elem)
     {
-        var ptr = _head.next;
-        var oldHead = _head.next;
-
         if (_head.next.data!.Equals(elem))
         {
+            var node = _head.next;
+
+            node.next.prior = node.prior;
+            node.prior.next = node.next;
             _head.next = _head.next.next;
+            _head.prior = _head.prior.prior;
 
             Count--;
         }
         else
         {
-            while (ptr.next is not null)
+            var ptr = _head.next;
+
+            while (ptr is not null)
             {
-                if (ptr.next.data!.Equals(elem))
+                if (ptr.data!.Equals(elem))
                 {
-                    ptr.next = ptr.next!.next;
+                    ptr.prior.next = ptr.next;
+                    ptr.next.prior = ptr.prior;
 
                     Count--;
 
@@ -107,15 +103,6 @@ public class CircularLinkedList<T> : Common.IEnumerable<T>
                 ptr = ptr.next;
             }
         }
-        
-        ptr = _head.next;
-
-        while (ptr.next != oldHead)
-        {
-            ptr = ptr.next;
-        }
-
-        ptr.next = _head.next;
     }
 
     public void RemoveAt(int index)
@@ -125,31 +112,27 @@ public class CircularLinkedList<T> : Common.IEnumerable<T>
             return;
         }
 
-        var ptr = _head;
-        var oldHead = _head.next;
-
         if (index == 1)
         {
+            var node = _head.next;
+
+            node.next.prior = node.prior;
+            node.prior.next = node.next;
             _head.next = _head.next.next;
+            _head.prior = _head.prior.prior;
         }
         else
         {
+            var ptr = _head.next;
+
             for (int i = 0; i < (index - 1); i++)
             {
                 ptr = ptr.next;
             }
 
-            ptr.next = ptr.next.next;
+            ptr.prior.next = ptr.next;
+            ptr.next.prior = ptr.prior;
         }
-
-        ptr = _head.next;
-
-        while (ptr.next != oldHead)
-        {
-            ptr = ptr.next;
-        }
-        
-        ptr.next = _head.next;
 
         Count--;
     }
@@ -181,62 +164,86 @@ public class CircularLinkedList<T> : Common.IEnumerable<T>
 
     public int LastIndexOf(T elem)
     {
-        var i = 0;
-        var index = -1;
-        var ptr = _head.next;
-        var isHead = true;
+        var index = 0;
+        var ptr = _head.prior;
+        var isTail = true;
 
-        while (isHead || ptr != _head.next)
+        while (isTail || ptr != _head.prior)
         {
-            if (isHead)
+            if (isTail)
             {
-                isHead = false;
+                isTail = false;
             }
 
             if (ptr.data!.Equals(elem))
             {
-                index = i;
+                return Count - index - 1;
             }
 
-            ptr = ptr.next;
-            i++;
+            ptr = ptr.prior;
+            index++;
         }
 
-        return index;
+        return -1;
+    }
+
+    /// <summary>
+    /// 反向输出
+    /// </summary>
+    public void ReversePrint()
+    {
+        var cur = _head.prior;
+        var isTail = true;
+
+        while (isTail || cur != _head.prior)
+        {
+            if (isTail)
+            {
+                isTail = false;
+            }
+
+            Console.WriteLine(cur.data);
+
+            cur = cur.prior;
+        }
     }
 
     public Common.IEnumerator<T> GetEnumerator()
-        => new CircularLinkedListEnumerator(this);
+        => new DoubleLinkedListEnumerator(this);
 
     /// <summary>
     /// 链表节点
     /// </summary>
-    private class CircularLinkedListNode
+    private class DoubleLinkedListNode
     {
         /// <summary>
         /// 数据
         /// </summary>
         public T data;
         /// <summary>
-        /// 下一节点引用
+        /// 前驱节点引用
         /// </summary>
-        public CircularLinkedListNode next;
+        public DoubleLinkedListNode prior;
+        /// <summary>
+        /// 后继节点引用
+        /// </summary>
+        public DoubleLinkedListNode next;
     }
 
     /// <summary>
     /// 链表迭代器
     /// </summary>
-    private class CircularLinkedListEnumerator : Common.IEnumerator<T>
+    private class DoubleLinkedListEnumerator : Common.IEnumerator<T>
     {
         public T Current => _curPtr.data;
 
-        private CircularLinkedList<T> _list;
+        private DoubleLinkedList<T> _list;
 
-        private CircularLinkedListNode _curPtr;
+        private DoubleLinkedListNode _curPtr;
 
         private bool _isFirstNode = true;
 
-        public CircularLinkedListEnumerator(CircularLinkedList<T> list)
+        public DoubleLinkedListEnumerator(DoubleLinkedList<T> list)
         {
             _list = list;
             _curPtr = list._head;
