@@ -209,7 +209,7 @@ public class CircularLinkedList<T> : Common.IEnumerable<T>
         => new CircularLinkedListEnumerator(this);
 
     /// <summary>
-    /// 链表节点
+    /// 循环链表节点
     /// </summary>
     private class CircularLinkedListNode
     {
@@ -224,7 +224,7 @@ public class CircularLinkedList<T> : Common.IEnumerable<T>
     }
 
     /// <summary>
-    /// 链表迭代器
+    /// 循环链表迭代器
     /// </summary>
     private class CircularLinkedListEnumerator : Common.IEnumerator<T>
     {

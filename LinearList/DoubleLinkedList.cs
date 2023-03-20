@@ -212,7 +212,7 @@ public class DoubleLinkedList<T> : Common.IEnumerable<T>
         => new DoubleLinkedListEnumerator(this);
 
     /// <summary>
-    /// 链表节点
+    /// 双向链表节点
     /// </summary>
     private class DoubleLinkedListNode
     {
@@ -231,7 +231,7 @@ public class DoubleLinkedList<T> : Common.IEnumerable<T>
     }
 
     /// <summary>
-    /// 链表迭代器
+    /// 双向链表迭代器
     /// </summary>
     private class DoubleLinkedListEnumerator : Common.IEnumerator<T>
     {
