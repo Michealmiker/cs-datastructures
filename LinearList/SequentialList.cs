@@ -27,6 +27,11 @@ public class SequentialList<T>: Common.IEnumerable<T>
     public int Capacity { get; private set; }
 
     /// <summary>
+    /// 表是否为空
+    /// </summary>
+    public bool IsEmpty => Count == 0;
+
+    /// <summary>
     /// 表存储空间
     /// </summary>
     private T[] _contents;
