@@ -18,14 +18,17 @@ public class List<T>: IEnumerable<T>
     /// 长度
     /// </summary>
     public int Length { get; private set; }
+
+    /// <summary>
+    /// 表是否为空
+    /// </summary>
+    public bool IsEmpty => Length == 0;
     
     /// <summary>
     /// 元素集合
     /// </summary>
     private T[] _elements;
-
     
-
     public List()
     {
         _elements = new T[Global.InitialSize];
