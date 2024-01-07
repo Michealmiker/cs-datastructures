@@ -38,7 +38,7 @@ public class List<T>: IEnumerable<T>
         
         var ptr = _header;
 
-        while (!ptr.Next.Equals(_header))
+        while (ptr.Next != _header)
         {
             ptr = ptr.Next;
         }

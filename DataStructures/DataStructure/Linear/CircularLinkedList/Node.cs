@@ -4,7 +4,7 @@
 /// 链表节点
 /// </summary>
 /// <typeparam name="T"></typeparam>
-public class Node<T>: IEquatable<Node<T>>
+public class Node<T>
 {
     /// <summary>
     /// 数据域
@@ -32,17 +32,4 @@ public class Node<T>: IEquatable<Node<T>>
     public Node<T>? Next { get; set; }
 
     public override string ToString() => $"{Element}";
-
-    public bool Equals(Node<T>? other) => Element.Equals(other.Element);
-
-    public override bool Equals(object? obj)
-    {
-        if (obj is null
-            || obj.GetType() is not Node<T>)
-        {
-            return false;
-        }
-        
-        return Equals(obj as Node<T>);
-    }
 }
