@@ -1,4 +1,28 @@
-﻿TestDoublyLinkedList();
+﻿TestStaticLinkList();
+
+void TestStaticLinkList()
+{
+    var list = new DataStructure.Linear.StaticLinkList.List<int>(10);
+    
+    for (int i = 0; i < 9; i++)
+    {
+        list.Add(i);
+    }
+
+    list.Insert(99, 5);
+
+    Console.WriteLine(list);
+    
+    list.RemoveAt(5);
+
+    Console.WriteLine();
+    Console.WriteLine();
+    
+    foreach (var elem in list)
+    {
+        Console.WriteLine(elem);
+    }
+}
 
 void TestDoublyLinkedList()
 {
