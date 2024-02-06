@@ -2,21 +2,21 @@
 
 void TestSequentialQueue()
 {
-    var stack = new DataStructure.Linear.SequentialQueue.Queue<int>(11);
+    var queue = new DataStructure.Linear.SequentialQueue.Queue<int>(11);
     
     for (int i = 0; i < 10; i++)
     {
-        stack.Enqueue(i);
+        queue.Enqueue(i);
     }
 
-    Console.WriteLine(stack);
+    Console.WriteLine(queue);
     
-    stack.Dequeue();
+    queue.Dequeue();
 
     Console.WriteLine();
     Console.WriteLine();
     
-    foreach (var elem in stack)
+    foreach (var elem in queue)
     {
         Console.WriteLine(elem);
     }
