@@ -1,4 +1,26 @@
-﻿TestSequentialQueue();
+﻿TestLinkedQueue();
+
+void TestLinkedQueue()
+{
+    var queue = new DataStructure.Linear.LinkedQueue.Queue<int>();
+    
+    for (int i = 0; i < 10; i++)
+    {
+        queue.Enqueue(i);
+    }
+
+    Console.WriteLine(queue);
+    
+    queue.Dequeue();
+
+    Console.WriteLine();
+    Console.WriteLine();
+    
+    foreach (var elem in queue)
+    {
+        Console.WriteLine(elem);
+    }
+}
 
 void TestSequentialQueue()
 {
