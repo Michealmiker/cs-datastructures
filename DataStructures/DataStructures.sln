@@ -5,9 +5,11 @@ VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataStructure", "DataStructure\DataStructure.csproj", "{159A16DA-20A9-4816-A882-954C74D2D72E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Algorithm", "Algorithm\Algorithm.csproj", "{EE2F9E1F-9D4E-46CA-82C8-C3802C1326DA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Algorithm", "Algorithm\Algorithm.csproj", "{EE2F9E1F-9D4E-46CA-82C8-C3802C1326DA}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestProgram", "TestProgram\TestProgram.csproj", "{F2EA1B66-1335-4A08-81DF-FC36A00AF271}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{E55D151A-91B2-44A5-B4A8-E53ECA422B46}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{F2EA1B66-1335-4A08-81DF-FC36A00AF271}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F2EA1B66-1335-4A08-81DF-FC36A00AF271}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2EA1B66-1335-4A08-81DF-FC36A00AF271}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E55D151A-91B2-44A5-B4A8-E53ECA422B46}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E55D151A-91B2-44A5-B4A8-E53ECA422B46}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E55D151A-91B2-44A5-B4A8-E53ECA422B46}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E55D151A-91B2-44A5-B4A8-E53ECA422B46}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
