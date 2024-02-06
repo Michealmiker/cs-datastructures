@@ -1,4 +1,4 @@
-﻿namespace DataStructure.Common;
+﻿namespace Common;
 
 /// <summary>
 /// 常量

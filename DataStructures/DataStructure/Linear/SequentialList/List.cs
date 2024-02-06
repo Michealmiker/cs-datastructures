@@ -1,5 +1,5 @@
 ﻿using System.Collections;
-using DataStructure.Common;
+using Common;
 
 namespace DataStructure.Linear.SequentialList;
 

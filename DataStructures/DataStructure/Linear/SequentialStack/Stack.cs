@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Text;
-using DataStructure.Common;
+using Common;
 
 namespace DataStructure.Linear.SequentialStack;
 
