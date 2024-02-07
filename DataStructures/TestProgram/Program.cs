@@ -2,6 +2,19 @@
 var testIntArray2 = new[] { 2, 5, 7, 17, 23, 25, 31, 35, 42, 76 };
 
 TestSequentialSearch();
+Console.WriteLine();
+TestBinarySearch();
+
+void TestBinarySearch()
+{
+    var sw = Stopwatch.StartNew();
+    var result = testIntArray2.BinarySearch(elem => elem == 31 ? 0 : elem > 31 ? 1 : -1);
+    sw.Stop();
+    
+    Console.WriteLine($"{nameof(TestBinarySearch)}");
+    Console.WriteLine($"result: {result}");
+    Console.WriteLine($"time: {sw.Elapsed}");
+}
 
 void TestSequentialSearch()
 {
@@ -9,6 +22,8 @@ void TestSequentialSearch()
     var result = testIntArray1.SequentialSearch(elem => elem == 34);
     sw.Stop();
     
+    Console.WriteLine($"{nameof(TestSequentialSearch)}");
+    Console.WriteLine($"result: {result}");
     Console.WriteLine($"time: {sw.Elapsed}");
 }
 
