@@ -1,4 +1,16 @@
-﻿TestLinkedQueue();
+﻿var testIntArray1 = new[] { 30, 25, 0, 44, 10, 98, 34, 77, 26, 91 };
+var testIntArray2 = new[] { 2, 5, 7, 17, 23, 25, 31, 35, 42, 76 };
+
+TestSequentialSearch();
+
+void TestSequentialSearch()
+{
+    var sw = Stopwatch.StartNew();
+    var result = testIntArray1.SequentialSearch(elem => elem == 34);
+    sw.Stop();
+    
+    Console.WriteLine($"time: {sw.Elapsed}");
+}
 
 void TestLinkedQueue()
 {
