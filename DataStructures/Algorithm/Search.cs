@@ -52,7 +52,8 @@ public static class Search
             {
                 return middle;
             }
-            else if (compare(elem) > 0)
+
+            if (compare(elem) > 0)
             {
                 high = middle - 1;
             }
