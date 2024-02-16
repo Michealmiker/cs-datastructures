@@ -13,7 +13,7 @@ public static class Sort
     /// <param name="array"></param>
     /// <param name="compare"></param>
     /// <typeparam name="T"></typeparam>
-    public static void InsertSort<T>(this T[] array, Func<T, T, int> compare)
+    public static void StraightInsertionSort<T>(this T[] array, Func<T, T, int> compare)
     {
         var rear = 0;
         var length = array.Length;

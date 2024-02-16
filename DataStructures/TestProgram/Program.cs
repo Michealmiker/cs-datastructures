@@ -1,11 +1,11 @@
 ﻿var testIntArray1 = new[] { 30, 25, 0, 44, 10, 98, 34, 77, 26, 91 };
 var testIntArray2 = new[] { 2, 5, 7, 17, 23, 25, 31, 35, 42, 76 };
 
-TestInsertSort();
+TestStraightInsertionSort();
 
-void TestInsertSort()
+void TestStraightInsertionSort()
 {
-    testIntArray1.InsertSort((item1, item2)
+    testIntArray1.StraightInsertionSort((item1, item2)
         => (item1 - item2) switch
         {
             > 0 => 1,
