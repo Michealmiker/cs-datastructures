@@ -10,7 +10,7 @@ public static class Search
     /// <summary>
     /// 顺序查找
     /// </summary>
-    /// <param name="collection"></param>
+    /// <param name="array"></param>
     /// <param name="condition"></param>
     /// <typeparam name="T"></typeparam>
     /// <returns></returns>

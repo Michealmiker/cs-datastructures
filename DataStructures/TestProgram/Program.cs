@@ -1,9 +1,20 @@
 ﻿var testIntArray1 = new[] { 30, 25, 0, 44, 10, 98, 34, 77, 26, 91 };
 var testIntArray2 = new[] { 2, 5, 7, 17, 23, 25, 31, 35, 42, 76 };
 
-TestSequentialSearch();
-Console.WriteLine();
-TestBinarySearch();
+TestInsertSort();
+
+void TestInsertSort()
+{
+    testIntArray1.InsertSort((item1, item2)
+        => (item1 - item2) switch
+        {
+            > 0 => 1,
+            < 0 => -1,
+            _ => 0
+        });
+    
+    testIntArray1.PrintArray();
+}
 
 void TestBinarySearch()
 {
